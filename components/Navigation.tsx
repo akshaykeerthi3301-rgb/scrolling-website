@@ -75,7 +75,7 @@ export default function Navigation() {
             height: '100%',
             background: 'linear-gradient(90deg, #ff6b35, #ff9a5c)',
             transformOrigin: 'left center',
-            scaleX: 0,
+            transform: 'scaleX(0)',
           }}
         />
       </div>

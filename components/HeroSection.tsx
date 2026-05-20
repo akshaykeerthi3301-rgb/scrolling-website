@@ -59,14 +59,15 @@ export default function HeroSection() {
     });
 
     // Bouncing scroll indicator
-    gsap.to(scrollHintRef.current?.querySelector('.scroll-line'), {
+    const scrollLine = scrollHintRef.current?.querySelector('.scroll-line');
+    if (scrollLine) gsap.to(scrollLine, {
       y: 16,
       repeat: -1,
       yoyo: true,
       ease: 'power2.inOut',
       duration: 0.9,
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef });  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section
