@@ -8,19 +8,18 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const stats = [
-  { value: '120+', label: 'Projects delivered' },
-  { value: '6yrs', label: 'In the industry' },
-  { value: '98%', label: 'Client satisfaction' },
-  { value: '3×', label: 'Avg. conversion lift' },
+  { value: '5+', label: 'Years building' },
+  { value: '30+', label: 'Projects shipped' },
+  { value: '8', label: 'Countries explored' },
+  { value: '∞', label: 'Curiosity' },
 ];
 
-const words = ['We believe', 'great design', 'is invisible —', 'you just feel', 'how right', 'it is.'];
+const quoteWords = ['Code is poetry —', 'every function', 'a verse, every', 'system a story', 'worth telling.'];
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Quote words reveal word by word
     gsap.from('.quote-word', {
       opacity: 0,
       y: 30,
@@ -34,7 +33,6 @@ export default function AboutSection() {
       },
     });
 
-    // Stats count up
     gsap.from('.stat-item', {
       y: 50,
       opacity: 0,
@@ -48,7 +46,6 @@ export default function AboutSection() {
       },
     });
 
-    // Parallax on the big decorative number
     gsap.to('.deco-number', {
       y: -120,
       ease: 'none',
@@ -60,7 +57,6 @@ export default function AboutSection() {
       },
     });
 
-    // Left panel slide in
     gsap.from('.about-left', {
       x: -60,
       opacity: 0,
@@ -80,13 +76,13 @@ export default function AboutSection() {
       id="about"
       style={{
         padding: 'clamp(5rem, 10vh, 9rem) clamp(1.5rem, 4vw, 3rem)',
-        background: 'var(--bg)',
+        background: 'transparent',
         borderTop: '1px solid rgba(255,255,255,0.04)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Huge decorative background number */}
+      {/* Huge decorative background initial */}
       <div
         className="deco-number"
         style={{
@@ -104,7 +100,7 @@ export default function AboutSection() {
           zIndex: 0,
         }}
       >
-        AXIS
+        AK
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
@@ -112,7 +108,7 @@ export default function AboutSection() {
 
           {/* Left */}
           <div className="about-left">
-            <div className="section-label" style={{ marginBottom: '1rem' }}>About us</div>
+            <div className="section-label" style={{ marginBottom: '1rem' }}>About me</div>
             <h2
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -123,13 +119,16 @@ export default function AboutSection() {
               }}
               className="text-gradient-white"
             >
-              A small team<br />with big ambition
+              Builder by day,<br />
+              <span className="text-gradient-accent">explorer always</span>
             </h2>
-            <p style={{ fontSize: '0.95rem', color: 'rgba(240,240,240,0.4)', lineHeight: 1.75, marginBottom: '2rem' }}>
-              Axis is a boutique creative studio. We partner with startups and scale-ups to design and build the digital products that define their category.
+            <p style={{ fontSize: '0.95rem', color: 'rgba(240,240,240,0.4)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+              I&apos;m Akshay — a full-stack developer and product designer who believes that the best
+              digital experiences feel inevitable, like they couldn&apos;t have been built any other way.
             </p>
             <p style={{ fontSize: '0.95rem', color: 'rgba(240,240,240,0.4)', lineHeight: 1.75 }}>
-              No bloated teams, no endless meetings. You get senior designers and engineers who care about your outcome as much as you do.
+              When I&apos;m not shipping products I&apos;m crossing time zones, grinding ranked queues,
+              or chasing a new PR in the gym. Every discipline teaches me something the others can&apos;t.
             </p>
 
             {/* Stats */}
@@ -164,7 +163,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right — quote */}
+          {/* Right — personal philosophy quote */}
           <div className="quote-container">
             <div
               style={{
@@ -185,7 +184,7 @@ export default function AboutSection() {
                   fontWeight: 700,
                 }}
               >
-                "
+                &ldquo;
               </div>
               <blockquote
                 style={{
@@ -196,7 +195,7 @@ export default function AboutSection() {
                   color: '#f0f0f0',
                 }}
               >
-                {words.map((w, i) => (
+                {quoteWords.map((w, i) => (
                   <span
                     key={i}
                     className="quote-word"
@@ -225,7 +224,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#f0f0f0' }}>Akshay Keerthi</div>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(240,240,240,0.3)' }}>Founder, Axis Studio</div>
+                  <div style={{ fontSize: '0.75rem', color: 'rgba(240,240,240,0.3)' }}>Designer &amp; Developer</div>
                 </div>
               </div>
             </div>

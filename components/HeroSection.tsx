@@ -200,10 +200,10 @@ export default function HeroSection() {
               letterSpacing: '0.05em',
             }}
           >
-            See our work
+            See my work
           </a>
           <a
-            href="#services"
+            href="#contact"
             style={{
               padding: '0.9rem 2.5rem',
               border: '1px solid rgba(240,240,240,0.15)',
@@ -215,7 +215,7 @@ export default function HeroSection() {
               letterSpacing: '0.05em',
             }}
           >
-            What we do
+            Let&apos;s talk
           </a>
         </div>
       </div>

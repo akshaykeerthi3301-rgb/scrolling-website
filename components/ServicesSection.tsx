@@ -10,27 +10,27 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const services = [
   {
     icon: '◈',
-    title: 'Brand Identity',
-    desc: 'Logo systems, visual language, and brand guidelines that make you unmistakable.',
-    items: ['Wordmark & logomark', 'Color systems', 'Typography', 'Brand guidelines'],
+    title: 'UI / UX Design',
+    desc: 'Interfaces that feel intuitive before the user reads a single label — research-driven, pixel-precise.',
+    items: ['User research', 'Wireframes & prototypes', 'Design systems', 'Figma hand-off'],
   },
   {
     icon: '⬡',
-    title: 'Web Design',
-    desc: 'Conversion-focused, visually stunning websites that earn trust on first scroll.',
-    items: ['Marketing sites', 'Landing pages', 'UI/UX design', 'Design systems'],
+    title: 'Frontend Dev',
+    desc: 'React and Next.js apps that are fast, accessible, and a joy to maintain.',
+    items: ['Next.js / React', 'GSAP animation', 'Responsive layouts', 'Performance tuning'],
   },
   {
     icon: '◎',
-    title: 'Development',
-    desc: 'Next.js, React, and TypeScript — performant, accessible, and built to last.',
-    items: ['Next.js / React', 'Motion & animation', 'CMS integration', 'Vercel deploy'],
+    title: 'Full-Stack Build',
+    desc: 'End-to-end product development — from database schema to deployed edge function.',
+    items: ['REST & GraphQL APIs', 'Auth & payments', 'Supabase / PostgreSQL', 'Vercel / Railway deploy'],
   },
   {
     icon: '◉',
-    title: 'Product Design',
-    desc: 'From wireframes to polished UI — we make complex products feel effortless.',
-    items: ['User research', 'Prototyping', 'Component libraries', 'Usability testing'],
+    title: 'Consulting',
+    desc: 'A second pair of eyes on your architecture, codebase, or product strategy — no ego, just signal.',
+    items: ['Code review', 'Tech-stack advice', 'Roadmap planning', 'Performance audits'],
   },
 ];
 
@@ -87,14 +87,14 @@ export default function ServicesSection() {
       id="services"
       style={{
         padding: 'clamp(5rem, 10vh, 9rem) clamp(1.5rem, 4vw, 3rem)',
-        background: 'var(--bg)',
+        background: 'transparent',
         borderTop: '1px solid rgba(255,255,255,0.04)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Heading */}
         <div ref={headingRef} style={{ marginBottom: 'clamp(3rem, 6vh, 5rem)', maxWidth: '600px' }}>
-          <div className="section-label" style={{ marginBottom: '1rem' }}>What we do</div>
+          <div className="section-label" style={{ marginBottom: '1rem' }}>What I do</div>
           <h2
             style={{
               fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
@@ -105,11 +105,11 @@ export default function ServicesSection() {
             }}
             className="text-gradient-white"
           >
-            End-to-end<br />
-            <span className="text-gradient-accent">creative craft</span>
+            Full-stack<br />
+            <span className="text-gradient-accent">capabilities</span>
           </h2>
           <p style={{ fontSize: '1rem', color: 'rgba(240,240,240,0.4)', lineHeight: 1.7, maxWidth: '440px' }}>
-            We handle the full creative stack — so you get a cohesive result instead of a patchwork of vendors.
+            Design and engineering under one roof — so your product ships coherently, not as a patchwork.
           </p>
         </div>
 

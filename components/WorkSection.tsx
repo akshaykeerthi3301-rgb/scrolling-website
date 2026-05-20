@@ -13,36 +13,28 @@ const projects = [
     title: 'Vanta Brand Identity',
     category: 'Branding · Visual Design',
     desc: 'A complete rebrand for a B2B security startup — from wordmark to motion system.',
-    color: '#1a0a3a',
-    accent: '#9b5de5',
-    gradient: 'linear-gradient(135deg, #1a0a3a 0%, #2d1470 100%)',
+    accent: '#ff6b35',
   },
   {
     number: '02',
     title: 'Luminary Web Experience',
     category: 'Web Design · Development',
     desc: 'Scroll-driven marketing site that increased conversion 3× in 30 days.',
-    color: '#0a1a0a',
-    accent: '#06d6a0',
-    gradient: 'linear-gradient(135deg, #0a1a14 0%, #0d3326 100%)',
+    accent: '#4ecdc4',
   },
   {
     number: '03',
     title: 'Orbit Mobile App',
     category: 'Product Design · iOS',
     desc: 'A productivity app with a design system built for clarity at every step.',
-    color: '#1a0e00',
-    accent: '#ff9a3c',
-    gradient: 'linear-gradient(135deg, #1a0e00 0%, #3a2000 100%)',
+    accent: '#ff6b35',
   },
   {
     number: '04',
     title: 'Nova Design System',
     category: 'Systems Design · Figma',
     desc: '2,400+ components and a token library adopted by a 40-person product team.',
-    color: '#0a0a1a',
     accent: '#4ecdc4',
-    gradient: 'linear-gradient(135deg, #0a0a1a 0%, #101034 100%)',
   },
 ];
 
@@ -98,7 +90,7 @@ export default function WorkSection() {
     <section
       ref={sectionRef}
       id="work"
-      style={{ overflow: 'hidden', background: 'var(--bg)' }}
+      style={{ overflow: 'hidden', background: 'transparent' }}
     >
       <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
         {/* Header */}
@@ -125,7 +117,7 @@ export default function WorkSection() {
               }}
               className="text-gradient-white"
             >
-              What we've built
+              What I&apos;ve built
             </h2>
           </div>
           <div style={{ textAlign: 'right' }}>
@@ -167,14 +159,16 @@ export default function WorkSection() {
                   width: 'clamp(320px, 45vw, 600px)',
                   height: 'clamp(400px, 55vh, 560px)',
                   borderRadius: '1.5rem',
-                  background: p.gradient,
-                  border: `1px solid ${p.accent}22`,
+                  background: 'rgba(255,255,255,0.04)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,255,255,0.08)',
                   padding: '2.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   cursor: 'pointer',
-                  transition: 'transform 0.3s ease',
+                  transition: 'transform 0.3s ease, border-color 0.3s ease',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -187,7 +181,7 @@ export default function WorkSection() {
                     right: '-60px',
                     width: '240px',
                     height: '240px',
-                    background: `radial-gradient(circle, ${p.accent}30, transparent 70%)`,
+                    background: `radial-gradient(circle, ${p.accent}18, transparent 70%)`,
                     pointerEvents: 'none',
                   }}
                 />

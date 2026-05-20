@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
-const clients = ['Stripe', 'Linear', 'Vercel', 'Figma', 'Notion', 'Loom', 'Raycast', 'Arc', 'Clerk', 'Resend'];
+const clients = ['Next.js', 'React', 'TypeScript', 'GSAP', 'Tailwind', 'Supabase', 'Figma', 'PostgreSQL', 'Vercel', 'Node.js', 'Prisma', 'GraphQL'];
 
 export default function MarqueeSection() {
   const track1Ref = useRef<HTMLDivElement>(null);
@@ -36,7 +36,7 @@ export default function MarqueeSection() {
         borderTop: '1px solid rgba(255,255,255,0.05)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
         overflow: 'hidden',
-        background: 'rgba(255,255,255,0.01)',
+        background: 'rgba(2,5,18,0.4)',
       }}
     >
       {/* Row 1: scrolling left */}

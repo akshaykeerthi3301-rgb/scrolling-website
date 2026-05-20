@@ -81,14 +81,19 @@ export default function Navigation() {
       </div>
 
       <span style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', color: '#f0f0f0' }}>
-        AXIS<span style={{ color: '#ff6b35' }}>.</span>
+        AK<span style={{ color: '#ff6b35' }}>.</span>
       </span>
 
       <nav style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-        {['Work', 'Services', 'About', 'Contact'].map((item) => (
+        {[
+          { label: 'Work', id: 'work' },
+          { label: 'Skills', id: 'skills' },
+          { label: 'About', id: 'about' },
+          { label: 'Blog', id: 'blog' },
+        ].map((item) => (
           <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
+            key={item.id}
+            href={`#${item.id}`}
             style={{
               fontSize: '0.8rem',
               letterSpacing: '0.1em',
@@ -100,7 +105,7 @@ export default function Navigation() {
             onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#ff6b35')}
             onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240,240,240,0.5)')}
           >
-            {item}
+            {item.label}
           </a>
         ))}
         <a
@@ -116,7 +121,7 @@ export default function Navigation() {
             letterSpacing: '0.05em',
           }}
         >
-          Get in touch
+          Hire me
         </a>
       </nav>
     </header>
