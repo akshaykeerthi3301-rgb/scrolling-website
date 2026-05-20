@@ -118,9 +118,23 @@ export default function HeroSection() {
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 2rem' }}>
-        <div className="section-label" style={{ marginBottom: '2rem' }}>
-          Creative Agency — Est. 2024
+        <div className="section-label" style={{ marginBottom: '1.5rem' }}>
+          Designer &amp; Developer
         </div>
+
+        {/* Name — primary SEO signal */}
+        <h1
+          style={{
+            fontSize: 'clamp(0.85rem, 1.2vw, 1rem)',
+            fontWeight: 600,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(240,240,240,0.35)',
+            marginBottom: '1.25rem',
+          }}
+        >
+          Akshay Keerthi
+        </h1>
 
         <div
           ref={headlineRef}
@@ -137,11 +151,11 @@ export default function HeroSection() {
             gap: '0 0.25em',
           }}
         >
-          {['We', 'Craft'].map((w) => (
+          {['I', 'Craft'].map((w) => (
             <span
               key={w}
               className="hero-word text-gradient-white"
-              style={{ display: 'inline-block', overflow: 'hidden' }}
+              style={{ display: 'inline-block' }}
             >
               {w}
             </span>
@@ -168,7 +182,7 @@ export default function HeroSection() {
             lineHeight: 1.7,
           }}
         >
-          Strategy, design and development — we build things people remember.
+          Strategy, design and development — I build things people remember.
           From concept to launch, with obsessive attention to detail.
         </p>
 
