@@ -10,31 +10,39 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const projects = [
   {
     number: '01',
-    title: 'Vanta Brand Identity',
-    category: 'Branding · Visual Design',
-    desc: 'A complete rebrand for a B2B security startup — from wordmark to motion system.',
+    title: 'FleetSense',
+    category: 'Full-Stack SaaS · Next.js 15',
+    desc: 'Multi-tenant fleet management platform — predictive maintenance, Samsara telematics webhooks, Clerk org-auth, and Stripe billing across 15+ relational models.',
     accent: '#ff6b35',
+    tags: ['Next.js 15', 'PostgreSQL', 'Stripe', 'Clerk'],
+    href: 'https://github.com/akshaykeerthi3301-rgb',
   },
   {
     number: '02',
-    title: 'Luminary Web Experience',
-    category: 'Web Design · Development',
-    desc: 'Scroll-driven marketing site that increased conversion 3× in 30 days.',
+    title: 'Cross Asset Alpha Bot',
+    category: 'Quant Trading · Python',
+    desc: 'End-to-end algorithmic trading system for NSE derivatives — 7+ signal families, walk-forward validation, Telegram alerts, and a live paper-trading runtime. Champion strategy: ₹67,830 net P&L / 30 sessions.',
     accent: '#4ecdc4',
+    tags: ['Python', 'Upstox API', 'Telegram', 'NSE'],
+    href: 'https://github.com/akshaykeerthi3301-rgb',
   },
   {
     number: '03',
-    title: 'Orbit Mobile App',
-    category: 'Product Design · iOS',
-    desc: 'A productivity app with a design system built for clarity at every step.',
+    title: 'WebCraft AI',
+    category: 'AI Tool · Next.js · Groq',
+    desc: 'AI-powered website builder that generates, previews, and deploys full sites to Vercel in one prompt — auth-gated with signed cookie sessions and per-IP rate limiting.',
     accent: '#ff6b35',
+    tags: ['Next.js', 'Groq AI', 'Vercel API', 'Auth'],
+    href: 'https://github.com/akshaykeerthi3301-rgb/webcraft-ai',
   },
   {
     number: '04',
-    title: 'Nova Design System',
-    category: 'Systems Design · Figma',
-    desc: '2,400+ components and a token library adopted by a 40-person product team.',
+    title: 'ADHD Calendar',
+    category: 'Mobile App · Next.js · Capacitor',
+    desc: 'Mobile-first productivity calendar designed for ADHD brains — bottom-sheet task entry, Today/Calendar/Settings navigation, and a zero-distraction layout optimised for 390 px.',
     accent: '#4ecdc4',
+    tags: ['Next.js 14', 'Tailwind', 'Capacitor', 'iOS'],
+    href: 'https://github.com/akshaykeerthi3301-rgb',
   },
 ];
 
@@ -219,25 +227,45 @@ export default function WorkSection() {
                       fontWeight: 700,
                       color: '#f0f0f0',
                       letterSpacing: '-0.03em',
-                      marginBottom: '1rem',
+                      marginBottom: '0.75rem',
                       lineHeight: 1.2,
                     }}
                   >
                     {p.title}
                   </h3>
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(240,240,240,0.45)', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '0.875rem', color: 'rgba(240,240,240,0.45)', lineHeight: 1.6, marginBottom: '1rem' }}>
                     {p.desc}
                   </p>
+                  {/* Tech tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {p.tags.map((tag) => (
+                      <span key={tag} style={{
+                        fontSize: '0.65rem',
+                        padding: '0.2rem 0.55rem',
+                        background: `${p.accent}12`,
+                        border: `1px solid ${p.accent}30`,
+                        borderRadius: '100px',
+                        color: p.accent,
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                      }}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                >
                   <span style={{ fontSize: '0.8rem', color: p.accent, fontWeight: 600 }}>
-                    View case study
+                    View on GitHub
                   </span>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ color: p.accent }}>
                     <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </div>
+                </a>
               </div>
             ))}
 

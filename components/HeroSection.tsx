@@ -119,7 +119,7 @@ export default function HeroSection() {
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 2rem' }}>
         <div className="section-label" style={{ marginBottom: '1.5rem' }}>
-          Designer &amp; Developer
+          Private Banker · Builder · Creator
         </div>
 
         {/* Name — primary SEO signal */}
@@ -182,8 +182,8 @@ export default function HeroSection() {
             lineHeight: 1.7,
           }}
         >
-          Strategy, design and development — I build things people remember.
-          From concept to launch, with obsessive attention to detail.
+          IIM Sambalpur MBA · Private Banking at ICICI · Full-stack builder.
+          Finance by day, code by night, obsessed with things that work beautifully.
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
