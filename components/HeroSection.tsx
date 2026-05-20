@@ -20,7 +20,7 @@ export default function HeroSection() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     // Stagger headline words
-    const wordEls = headlineRef.current?.querySelectorAll('.hero-word');
+    const wordEls = Array.from(headlineRef.current?.querySelectorAll('.hero-word') ?? []);
     tl.from(wordEls, {
       y: 120,
       opacity: 0,
