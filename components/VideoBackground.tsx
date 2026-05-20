@@ -15,9 +15,11 @@ export default function VideoBackground() {
     let looping = false;
 
     // ─── how fast we chase the target (0 = frozen, 1 = instant) ──────────────
-    // 0.12 gives visible cinematic lag on slow scroll, still snappy on fast
-    const LERP = 0.12;
-    const SNAP_THRESHOLD = 0.002; // seconds — close enough to stop looping
+    // 0.06 → ~40 frames of silky glide on small scrolls (~650ms at 60fps)
+    // MIN_STEP ensures big/fast jumps still complete within ~12 frames
+    const LERP = 0.06;
+    const MIN_STEP = 0.018;        // seconds per frame floor (keeps fast scrolls snappy)
+    const SNAP_THRESHOLD = 0.002;  // seconds — close enough to stop looping
 
     // ─── main lerp loop ───────────────────────────────────────────────────────
     const loop = () => {
@@ -32,8 +34,10 @@ export default function VideoBackground() {
         return;
       }
 
-      // Move LERP-fraction of remaining gap every frame
-      video.currentTime += diff * LERP;
+      // Move at least MIN_STEP per frame so big jumps never stall,
+      // but default to the smoother LERP fraction for small scroll increments
+      const step = Math.sign(diff) * Math.max(Math.abs(diff) * LERP, MIN_STEP);
+      video.currentTime += step;
       rafId = requestAnimationFrame(loop);
     };
 
