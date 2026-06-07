@@ -7,8 +7,14 @@ type Project = {
 };
 
 export const metadata: Metadata = {
-  title: 'Projects — Akshay Keerthi',
-  description: 'Real projects by Akshay Keerthi — FleetSense SaaS, Cross Asset Alpha Bot, WebCraft AI, ADHD Calendar, and more.',
+  title: 'Projects',
+  description: 'Projects built by Akshay Keerthi — FleetSense (fleet SaaS), Cross Asset Alpha Bot (NSE algorithmic trading), WebCraft AI, and ADHD Calendar.',
+  alternates: { canonical: '/projects' },
+  openGraph: {
+    title: 'Projects — Akshay Keerthi',
+    description: 'Real projects shipped by Akshay Keerthi: FleetSense SaaS, Cross Asset Alpha trading bot, WebCraft AI, ADHD Calendar.',
+    url: 'https://akshaykeerthi.vercel.app/projects',
+  },
 };
 
 const projects = [
