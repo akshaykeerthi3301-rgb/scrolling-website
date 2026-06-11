@@ -1,0 +1,38 @@
+import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { navItems, profile } from "@/lib/site";
+
+export function SiteHeader() {
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-neutral-950/68 backdrop-blur-xl">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 text-sm text-white md:px-8">
+        <Link href="/" className="flex items-center gap-3" aria-label="Akshaykeerthi home">
+          <span className="grid size-9 place-items-center rounded-sm border border-white/20 bg-white text-sm font-semibold text-neutral-950">
+            AK
+          </span>
+          <span className="hidden flex-col leading-none sm:flex">
+            <span className="font-semibold">{profile.name}</span>
+            <span className="mt-1 text-xs text-white/55">{profile.domain}</span>
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-6 md:flex">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="text-white/68 transition hover:text-white">
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        <Link
+          href="/contact"
+          className="inline-flex h-10 items-center gap-2 rounded-sm border border-white/15 px-3.5 text-white transition hover:border-white/40 hover:bg-white/10"
+        >
+          <Mail size={16} aria-hidden="true" />
+          <span className="hidden sm:inline">Start a build</span>
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+      </nav>
+    </header>
+  );
+}

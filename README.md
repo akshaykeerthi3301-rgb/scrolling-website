@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Akshaykeerthi Portfolio
 
-## Getting Started
+A cinematic, deployable portfolio for `akshaykeerthi-portfolio.vercel.app`.
 
-First, run the development server:
+## Stack
+
+- Next.js App Router
+- React 19 + TypeScript
+- Tailwind CSS
+- GSAP ScrollTrigger + Lenis
+- Canvas frame-sequence hero
+- AdSense-ready script, ad unit, and `/ads.txt`
+- SEO routes: `robots.ts`, `sitemap.ts`, page metadata
+- Trust routes: privacy policy, terms, editorial policy
+- Structured data and dynamic OpenGraph image
+
+## Local Development
 
 ```bash
+npm run generate:sequence
+npm run check:launch
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Set `NEXT_PUBLIC_SITE_URL` to the live free Vercel domain for now.
+2. Set `NEXT_PUBLIC_ADSENSE_ENABLED=true` only after AdSense is approved.
+3. Set `NEXT_PUBLIC_ADSENSE_CLIENT`, `NEXT_PUBLIC_ADSENSE_SLOT_IN_ARTICLE`, and `ADSENSE_PUBLISHER_ID`.
+4. Replace the placeholder articles and project details with final original content before requesting AdSense review.
+5. Deploy to Vercel with `npm run build`.
+6. Run `npm run check:launch` before production deploys.
 
-## Learn More
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for the full Vercel handoff.
+See [DOMAIN_OPTIONS.md](./DOMAIN_OPTIONS.md) for the current domain recommendation.
 
-To learn more about Next.js, take a look at the following resources:
+## Launch Checklist
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Replace all placeholder copy in `src/lib/site.ts` with final biography, project evidence, and links.
+- Replace the generated SVG frames with final optimized WebP or AVIF frames.
+- Set `NEXT_PUBLIC_SITE_URL` to the production Vercel domain.
+- Add `RESEND_API_KEY` when you want contact form submissions to send email.
+- Keep AdSense disabled until the site has original content and Google approves it.
+- Link the project from this folder, not the parent Expo folder.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Media Pipeline
 
-## Deploy on Vercel
+The current hero frames are generated SVG placeholders:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run generate:sequence
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Later, replace `public/sequences/akshay/frame-0000.svg` with optimized WebP or AVIF frames generated from a final video, and update `FrameSequenceCanvas` props if the extension changes.
