@@ -5,7 +5,7 @@ import { profile } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contact ${profile.name} for AI strategy consulting, GenAI implementation, digital transformation, and product development engagements.`,
+  description: `Contact ${profile.name} about roles, projects and collaborations.`,
 };
 
 export default function ContactPage() {
@@ -34,7 +34,7 @@ export default function ContactPage() {
             </p>
             <p className="inline-flex items-center gap-3">
               <Timer size={18} aria-hidden="true" />
-              AI strategy, GenAI products, consulting, and digital transformation.
+              Roles, projects and collaborations.
             </p>
           </div>
         </div>

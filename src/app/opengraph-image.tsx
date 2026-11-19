@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/lib/site";
 
-export const alt = `${profile.name} — AI Strategy Consultant`;
+export const alt = `${profile.name} — works, case studies and profile`;
 export const size = {
   width: 1200,
   height: 630,
@@ -25,7 +25,7 @@ export default function Image() {
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontSize: 24, opacity: 0.72 }}>AI Strategy Consultant &middot; IIM Sambalpur MBA</div>
+          <div style={{ fontSize: 24, opacity: 0.72 }}>Works &middot; Case studies &middot; Profile</div>
           <div style={{ border: "1px solid rgba(247,241,232,0.35)", padding: "14px 18px", fontSize: 28 }}>AK</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>

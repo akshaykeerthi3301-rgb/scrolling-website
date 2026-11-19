@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Clapperboard,
   GraduationCap,
-  MousePointer2,
   Play,
   RotateCcw,
 } from "lucide-react";
@@ -19,22 +18,27 @@ import {
   achievements,
   capabilities,
   cinematicScenes,
+  credentials,
   experience,
-  featuredWork,
-  processSteps,
   profile,
   stackHighlights,
 } from "@/lib/site";
+import { caseStudies, labWorks } from "@/lib/works";
 import { FrameSequenceCanvas } from "@/components/cinematic/frame-sequence-canvas";
 
 const chapters = [
-  { id: "intro", label: "Intro", range: "000-015" },
-  { id: "work", label: "Work", range: "016-031" },
-  { id: "process", label: "Process", range: "032-047" },
-  { id: "capabilities", label: "Skills", range: "048-063" },
-  { id: "experience", label: "Career", range: "064-079" },
+  { id: "intro", label: "Intro", range: "000-019" },
+  { id: "case-studies", label: "Case studies", range: "020-039" },
+  { id: "works", label: "Works", range: "040-059" },
+  { id: "profile", label: "Profile", range: "060-079" },
   { id: "connect", label: "Connect", range: "080-095" },
 ];
+
+const statusStyle = {
+  live: "bg-emerald-400/15 text-emerald-300",
+  code: "bg-sky-400/15 text-sky-300",
+  private: "bg-white/10 text-white/60",
+} as const;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -47,14 +51,9 @@ export function CinematicPortfolioExperience() {
   const [direction, setDirection] = useState<"forward" | "reverse">("forward");
   const [activeChapter, setActiveChapter] = useState(0);
   const [activeWork, setActiveWork] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
-  const [activeCapability, setActiveCapability] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const frame = Math.round(progress * 95);
-  const activeWorkItem = featuredWork[activeWork];
-  const activeProcessStep = processSteps[activeStep];
-  const activeCapabilityItem = capabilities[activeCapability];
+  const activeWorkItem = caseStudies[activeWork];
 
   const chapterProgress = useMemo(
     () =>
@@ -219,32 +218,30 @@ export function CinematicPortfolioExperience() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-sm border border-white/15 bg-white/8 px-3 py-2 text-sm text-white/72 backdrop-blur-xl">
               <Briefcase size={15} aria-hidden="true" />
-              AI Strategy & Digital Transformation
+              Works &middot; Case studies &middot; Profile
             </div>
 
             <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
               {profile.name}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-              AI Strategy Consultant — IIM Sambalpur MBA building at the
-              intersection of GenAI implementation, private banking, and
-              hands-on product delivery.
+              {profile.summary}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
-                onClick={() => scrollToSection("work")}
+                onClick={() => scrollToSection("case-studies")}
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-sm bg-white px-5 text-sm font-semibold text-neutral-950 transition hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300"
               >
-                View my work
+                See the case studies
                 <ArrowDown size={16} aria-hidden="true" />
               </button>
               <Link
                 href="/contact"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-sm border border-white/18 px-5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40"
               >
-                Start a conversation
+                Get in touch
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
@@ -294,7 +291,7 @@ export function CinematicPortfolioExperience() {
           </div>
           <button
             type="button"
-            onClick={() => scrollToSection("work")}
+            onClick={() => scrollToSection("case-studies")}
             className="inline-flex items-center gap-2 text-sm text-white/64 transition hover:text-white"
           >
             Scroll to explore
@@ -303,33 +300,32 @@ export function CinematicPortfolioExperience() {
         </div>
       </section>
 
-      {/* ── WORK ── */}
+      {/* ── CASE STUDIES ── */}
       <section
-        id="work"
+        id="case-studies"
         className="relative min-h-screen px-5 py-20 md:px-8 md:py-28"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
               <p className="text-sm font-semibold uppercase text-sky-300">
-                Selected work
+                Case studies
               </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-                Strategy meets execution.
+                What broke, what I decided, what happened.
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-8 text-white/66 md:justify-self-end">
-              Five projects spanning SaaS platforms, algorithmic trading,
-              GenAI agents, business consulting, and startup pitches — each
-              built end-to-end with real code and real outcomes.
+              Each one says plainly whether it is live, only on GitHub, or
+              private, and which trade-offs were mine.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="grid gap-4">
-              {featuredWork.map((work, index) => (
+          <div className="mt-12 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="grid content-start gap-3">
+              {caseStudies.map((work, index) => (
                 <button
-                  key={work.title}
+                  key={work.slug}
                   type="button"
                   onClick={() => setActiveWork(index)}
                   onMouseEnter={() => setActiveWork(index)}
@@ -339,7 +335,7 @@ export function CinematicPortfolioExperience() {
                       : "border-white/12 bg-neutral-950/52 text-white hover:border-white/30 hover:bg-white/10"
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-4 text-sm">
+                  <div className="flex items-center justify-between gap-4 text-xs">
                     <span
                       className={
                         activeWork === index
@@ -359,69 +355,84 @@ export function CinematicPortfolioExperience() {
                       {work.year}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-2xl font-semibold leading-8">
+                  <h3 className="mt-4 text-2xl font-semibold leading-8">
                     {work.title}
                   </h3>
                   <p
-                    className={`mt-3 text-sm leading-7 ${activeWork === index ? "text-neutral-600" : "text-white/58"}`}
+                    className={`mt-2 text-sm leading-6 ${activeWork === index ? "text-neutral-600" : "text-white/58"}`}
                   >
-                    {work.summary}
+                    {work.status.label}
                   </p>
                 </button>
               ))}
             </div>
 
-            <article className="rounded-sm border border-white/14 bg-neutral-950/66 p-6 shadow-2xl shadow-black/30 backdrop-blur-xl lg:sticky lg:top-24 lg:self-start">
-              <div className="flex items-center justify-between gap-4 border-b border-white/12 pb-5">
+            <article
+              data-lenis-prevent
+              className="rounded-sm border border-white/14 bg-neutral-950/70 p-6 shadow-2xl shadow-black/30 backdrop-blur-xl lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-y-auto"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/12 pb-5">
                 <div>
-                  <p className="text-sm font-semibold uppercase text-sky-300">
-                    Case study
-                  </p>
-                  <h3 className="mt-2 text-3xl font-semibold">
+                  <span
+                    className={`inline-block rounded-sm px-2.5 py-1 text-xs font-semibold ${statusStyle[activeWorkItem.status.kind]}`}
+                  >
+                    {activeWorkItem.status.label}
+                  </span>
+                  <h3 className="mt-3 text-3xl font-semibold">
                     {activeWorkItem.title}
                   </h3>
+                  <p className="mt-3 max-w-xl text-sm leading-7 text-white/66">
+                    {activeWorkItem.summary}
+                  </p>
                 </div>
-                <Link
-                  href={`/work/${activeWorkItem.slug}`}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-sm bg-white px-4 text-sm font-semibold text-neutral-950 transition hover:bg-sky-100"
-                >
-                  Open
-                  <ArrowRight size={15} aria-hidden="true" />
-                </Link>
-              </div>
-              <div className="grid gap-5 py-6 md:grid-cols-2">
-                {activeWorkItem.points.map((point) => (
-                  <div
-                    key={point}
-                    className="border-l border-sky-300/50 pl-4"
+                <div className="flex flex-wrap gap-2">
+                  {activeWorkItem.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-10 items-center justify-center gap-2 rounded-sm border border-white/18 px-3.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+                    >
+                      {link.label}
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </a>
+                  ))}
+                  <Link
+                    href={`/work/${activeWorkItem.slug}`}
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-sm bg-white px-3.5 text-sm font-semibold text-neutral-950 transition hover:bg-sky-100"
                   >
+                    Full case study
+                    <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-4 py-6 sm:grid-cols-2">
+                {activeWorkItem.points.map((point) => (
+                  <div key={point} className="border-l border-sky-300/50 pl-4">
                     <CheckCircle2
-                      size={17}
+                      size={16}
                       className="text-sky-300"
                       aria-hidden="true"
                     />
-                    <p className="mt-3 text-sm leading-6 text-white/70">
+                    <p className="mt-2 text-sm leading-6 text-white/70">
                       {point}
                     </p>
                   </div>
                 ))}
               </div>
-              <div className="grid gap-4 text-sm leading-7 text-white/68 md:grid-cols-3">
+
+              <div className="grid gap-5 text-sm leading-7 text-white/68">
                 <p>
                   <span className="block text-xs font-semibold uppercase text-white">
-                    Challenge
+                    The operational friction
                   </span>
                   {activeWorkItem.challenge}
                 </p>
                 <p>
                   <span className="block text-xs font-semibold uppercase text-white">
-                    Approach
-                  </span>
-                  {activeWorkItem.approach}
-                </p>
-                <p>
-                  <span className="block text-xs font-semibold uppercase text-white">
-                    Outcome
+                    Outcome and validation
                   </span>
                   {activeWorkItem.outcome}
                 </p>
@@ -431,164 +442,76 @@ export function CinematicPortfolioExperience() {
         </div>
       </section>
 
-      {/* ── PROCESS ── */}
+      {/* ── WORKS ── */}
       <section
-        id="process"
-        className="relative min-h-screen px-5 py-20 md:px-8 md:py-28"
+        id="works"
+        className="relative px-5 py-20 md:px-8 md:py-28"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase text-teal-300">
-              Process
+              Works
             </p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-              From diagnosis to delivery.
+              Smaller builds and experiments.
             </h2>
           </div>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
-            <div className="rounded-sm border border-white/12 bg-white/8 p-5 backdrop-blur-xl">
-              <p className="text-sm text-white/58">Current phase</p>
-              <h3 className="mt-3 text-3xl font-semibold">
-                {activeProcessStep.title}
-              </h3>
-              <p className="mt-4 text-base leading-8 text-white/68">
-                {activeProcessStep.body}
-              </p>
-              <div className="mt-6 h-2 overflow-hidden rounded-sm bg-white/10">
-                <div
-                  className="h-full bg-teal-300 transition-all duration-500"
-                  style={{
-                    width: `${((activeStep + 1) / processSteps.length) * 100}%`,
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              {processSteps.map((step, index) => (
-                <button
-                  key={step.title}
-                  type="button"
-                  onClick={() => setActiveStep(index)}
-                  onMouseEnter={() => setActiveStep(index)}
-                  className={`border-t p-5 text-left transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-300/70 ${
-                    activeStep === index
-                      ? "border-teal-300 bg-white text-neutral-950"
-                      : "border-white/18 bg-neutral-950/48 text-white backdrop-blur-xl hover:bg-white/10"
-                  }`}
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {labWorks.map((work) => (
+              <Link
+                key={work.slug}
+                href={`/work/${work.slug}`}
+                className="group flex flex-col rounded-sm border border-white/12 bg-neutral-950/52 p-5 backdrop-blur-xl transition hover:border-white/30 hover:bg-white/10"
+              >
+                <span
+                  className={`self-start rounded-sm px-2.5 py-1 text-xs font-semibold ${statusStyle[work.status.kind]}`}
                 >
-                  <p
-                    className={`font-mono text-sm ${activeStep === index ? "text-teal-800" : "text-teal-300"}`}
-                  >
-                    0{index + 1}
-                  </p>
-                  <h3 className="mt-5 text-xl font-semibold">{step.title}</h3>
-                  <p
-                    className={`mt-4 text-sm leading-7 ${activeStep === index ? "text-neutral-600" : "text-white/58"}`}
-                  >
-                    {step.body}
-                  </p>
-                </button>
-              ))}
+                  {work.status.label}
+                </span>
+                <h3 className="mt-4 text-xl font-semibold">{work.title}</h3>
+                <p className="mt-1 text-xs text-white/44">
+                  {work.type} &middot; {work.year}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-white/60">
+                  {work.summary}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-white/80 transition group-hover:text-white">
+                  Read more
+                  <ArrowRight size={14} aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+            <div className="flex flex-col justify-center rounded-sm border border-dashed border-white/18 p-5 text-white/50">
+              <p className="text-lg font-semibold text-white/70">
+                More projects to come.
+              </p>
+              <p className="mt-2 text-sm leading-6">
+                New builds are added here as they ship.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CAPABILITIES ── */}
-      <section
-        id="capabilities"
-        className="relative min-h-screen px-5 py-20 md:px-8 md:py-28"
-      >
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <p className="text-sm font-semibold uppercase text-sky-300">
-              Capabilities
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-              The useful mix.
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-white/66">
-              {profile.summary}
-            </p>
-            <div className="mt-8 rounded-sm border border-white/12 bg-neutral-950/58 p-5 backdrop-blur-xl">
-              <div className="flex items-center gap-3 text-sm text-white/58">
-                <MousePointer2
-                  size={16}
-                  className="text-sky-300"
-                  aria-hidden="true"
-                />
-                Hover or click a capability to see details.
-              </div>
-              <h3 className="mt-5 text-2xl font-semibold">
-                {activeCapabilityItem.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-white/66">
-                {activeCapabilityItem.body}
-              </p>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {capabilities.map((capability, index) => {
-              const Icon = capability.icon;
-              const isActive = activeCapability === index;
-
-              return (
-                <button
-                  key={capability.title}
-                  type="button"
-                  onClick={() => setActiveCapability(index)}
-                  onMouseEnter={() => setActiveCapability(index)}
-                  className={`rounded-sm border p-5 text-left backdrop-blur-xl transition duration-300 focus:outline-none focus:ring-2 focus:ring-sky-300/70 ${
-                    isActive
-                      ? "border-sky-300 bg-white text-neutral-950"
-                      : "border-white/12 bg-white/7 text-white hover:border-white/30 hover:bg-white/12"
-                  }`}
-                >
-                  <Icon
-                    size={24}
-                    className={isActive ? "text-sky-700" : "text-sky-300"}
-                    aria-hidden="true"
-                  />
-                  <h3 className="mt-5 text-lg font-semibold">
-                    {capability.title}
-                  </h3>
-                  <p
-                    className={`mt-3 text-sm leading-7 ${isActive ? "text-neutral-600" : "text-white/58"}`}
-                  >
-                    {capability.body}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── EXPERIENCE ── */}
-      <section
-        id="experience"
-        className="relative px-5 py-20 md:px-8 md:py-28"
-      >
+      {/* ── PROFILE ── */}
+      <section id="profile" className="relative px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
               <p className="text-sm font-semibold uppercase text-violet-300">
-                Experience
+                Profile
               </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-                Career trajectory.
+                Where the judgment comes from.
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-8 text-white/66 md:justify-self-end">
-              From Amazon&apos;s global HR operations to ICICI Bank&apos;s
-              private banking desk to independent AI consulting — each role
-              sharpened a different edge.
+              Client desks and HR operations taught me how workflows fail under
+              pressure. The builds are how I test what to do about it.
             </p>
           </div>
 
-          {/* Achievements strip */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {achievements.map((item) => (
               <div
@@ -608,22 +531,15 @@ export function CinematicPortfolioExperience() {
             ))}
           </div>
 
-          {/* Timeline */}
           <div className="mt-10 grid gap-4">
-            {experience.map((exp, index) => (
+            {experience.map((exp) => (
               <div
-                key={exp.company}
+                key={`${exp.company}-${exp.role}`}
                 className="grid gap-4 rounded-sm border border-white/12 bg-neutral-950/52 p-5 backdrop-blur-xl md:grid-cols-[0.3fr_0.4fr_0.3fr] md:items-center"
               >
                 <div className="flex items-center gap-3">
                   {exp.company === "IIM Sambalpur" ? (
                     <GraduationCap
-                      size={20}
-                      className="text-violet-300"
-                      aria-hidden="true"
-                    />
-                  ) : exp.company === "Mind Customs" ? (
-                    <Award
                       size={20}
                       className="text-violet-300"
                       aria-hidden="true"
@@ -642,9 +558,7 @@ export function CinematicPortfolioExperience() {
                     </p>
                   </div>
                 </div>
-                <div>
-                  <p className="text-sm text-white/68">{exp.highlight}</p>
-                </div>
+                <p className="text-sm text-white/68">{exp.highlight}</p>
                 <div className="flex items-center justify-between gap-4 md:justify-end">
                   <span className="rounded-sm bg-violet-400/15 px-3 py-1 text-xs font-semibold text-violet-300">
                     {exp.metric}
@@ -654,24 +568,71 @@ export function CinematicPortfolioExperience() {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {credentials.map((item) => (
+              <div
+                key={item.title}
+                className="flex items-start gap-3 rounded-sm border border-white/12 bg-white/7 p-5 backdrop-blur-xl"
+              >
+                <Award
+                  size={20}
+                  className="mt-0.5 shrink-0 text-violet-300"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="font-semibold">{item.title}</p>
+                  <p className="mt-1 text-sm text-white/54">{item.issuer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+            {capabilities.map((group) => {
+              const Icon = group.icon;
+
+              return (
+                <div
+                  key={group.title}
+                  className="rounded-sm border border-white/12 bg-white/7 p-5 backdrop-blur-xl"
+                >
+                  <Icon
+                    size={24}
+                    className="text-sky-300"
+                    aria-hidden="true"
+                  />
+                  <h3 className="mt-4 text-lg font-semibold">{group.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/58">
+                    {group.body}
+                  </p>
+                  <ul className="mt-4 grid gap-2 text-sm leading-6 text-white/70">
+                    {group.items.map((item) => (
+                      <li key={item} className="border-l border-sky-300/40 pl-3">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* ── CONNECT (CTA) ── */}
+      {/* ── CONNECT ── */}
       <section id="connect" className="relative px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="rounded-sm border border-white/12 bg-neutral-950/72 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-12">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase text-sky-300">
-                Let&apos;s connect
+                Contact
               </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
-                Ready to discuss your AI transformation?
+                Let&apos;s talk.
               </h2>
               <p className="mt-6 text-base leading-8 text-white/66">
-                Whether you need an AI strategy, a GenAI product prototype, or
-                a full go-to-market plan — I work end-to-end from diagnosis
-                to delivery.
+                {profile.availability}
               </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -679,14 +640,14 @@ export function CinematicPortfolioExperience() {
                   href="/contact"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-sm bg-white px-6 text-sm font-semibold text-neutral-950 transition hover:bg-sky-100"
                 >
-                  Start a conversation
+                  Get in touch
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
                 <Link
                   href="/work"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-sm border border-white/16 px-6 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
                 >
-                  View all projects
+                  All works
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </div>

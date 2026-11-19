@@ -14,8 +14,7 @@ export default function Home() {
           name: profile.name,
           url: siteUrl,
           email: profile.email,
-          jobTitle: "AI Strategy Consultant",
-          description: profile.summary,
+                    description: profile.summary,
           alumniOf: [
             {
               "@type": "CollegeOrUniversity",
@@ -27,15 +26,12 @@ export default function Home() {
             },
           ],
           knowsAbout: [
-            "AI Strategy",
-            "GenAI Implementation",
-            "LLM Orchestration",
-            "Claude API",
-            "Digital Transformation",
-            "Private Banking",
-            "HNI Wealth Advisory",
-            "Go-to-Market Strategy",
-            "Full-stack Development",
+            "AI product development",
+            "LLM evaluation",
+            "Private banking",
+            "Employee relations",
+            "Marketplace vendor management",
+            "Go-to-market strategy",
             "Next.js",
             "Python",
           ],
@@ -46,7 +42,7 @@ export default function Home() {
         data={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: `${profile.name} — AI Strategy Consultant`,
+          name: profile.name,
           url: siteUrl,
           description: profile.title,
           publisher: {

@@ -5,42 +5,42 @@ import { experience, profile, stackHighlights } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${profile.name} — IIM Sambalpur MBA, AI Strategy Consultant, and Private Banking Manager with hands-on GenAI implementation experience.`,
+  description: `Profile of ${profile.name}: IIM Sambalpur MBA, private banking and HR operations background, and independent AI product builder.`,
 };
 
 const certifications = [
   {
-    title: "Google AI Essentials",
-    issuer: "Google / Coursera",
-    detail: "GenAI, Responsible AI, LLM applications",
-    status: "In Progress — 2026",
+    title: "Executive Program in Forward Deployed AI Product Management",
+    issuer: "IITM Pravartak",
+    detail: "Taking AI products from prototype into real customer workflows",
+    status: "",
   },
   {
-    title: "Microsoft Azure AI Fundamentals (AI-900)",
-    issuer: "Microsoft / Pearson VUE",
-    detail: "AI workloads, ML principles, Azure AI services, GenAI",
-    status: "In Progress — 2026",
+    title: "Generative AI certification",
+    issuer: "Microsoft",
+    detail: "Generative AI concepts and applications",
+    status: "",
   },
   {
-    title: "Anthropic Claude API — Active Developer",
-    issuer: "Anthropic",
-    detail: "Agentic workflows and LLM integration across personal AI projects",
-    status: "2025 – Present",
+    title: "Responsible AI certification",
+    issuer: "United Nations",
+    detail: "Safe and accountable AI use",
+    status: "",
   },
 ];
 
 const skillCategories = [
   {
-    title: "AI & GenAI",
-    skills: ["Claude API", "LLM Orchestration", "Prompt Engineering", "Agentic Workflows", "n8n Automation", "AI Strategy", "Responsible AI", "AI Governance"],
+    title: "AI systems & prototyping",
+    skills: ["LLM agents", "Evaluation harnesses", "Guardrails and gates", "Prompt design", "Responsible AI"],
   },
   {
-    title: "Technical",
-    skills: ["Python", "Next.js 15", "TypeScript", "Prisma/PostgreSQL", "Stripe API", "Samsara API", "Upstox API", "GitHub", "Claude Code", "Power BI", "Excel"],
+    title: "Build tools",
+    skills: ["Python", "Next.js", "TypeScript", "Postgres", "GitHub", "Vercel", "Power BI", "Excel"],
   },
   {
-    title: "Domain & Business",
-    skills: ["HNI Wealth Advisory", "Equity Derivatives", "F&O", "AML/KYC", "Employee Relations", "Change Management", "Business Case Development", "Market Sizing", "GTM Strategy", "MECE"],
+    title: "Domain & commercial",
+    skills: ["HNI wealth advisory", "Employee relations", "Marketplace vendor management", "Go-to-market", "Business cases", "Client escalations"],
   },
 ];
 
@@ -60,8 +60,7 @@ export default function AboutPage() {
           <div className="max-w-3xl text-lg leading-9 text-neutral-700">
             <p>{profile.summary}</p>
             <p className="mt-6">
-              Interested in AI and digital transformation roles where domain knowledge and practical
-              implementation experience can contribute to meaningful client outcomes.
+              {profile.availability}
             </p>
           </div>
         </div>
@@ -141,7 +140,7 @@ export default function AboutPage() {
                 <p className="font-semibold">{cert.title}</p>
                 <p className="mt-2 text-sm text-neutral-500">{cert.issuer}</p>
                 <p className="mt-3 text-sm leading-7 text-neutral-600">{cert.detail}</p>
-                <p className="mt-3 text-xs font-semibold text-sky-700">{cert.status}</p>
+                {cert.status && <p className="mt-3 text-xs font-semibold text-sky-700">{cert.status}</p>}
               </div>
             ))}
           </div>
@@ -152,7 +151,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="flex items-center gap-3">
           <BookOpen size={22} className="text-sky-700" aria-hidden="true" />
-          <h2 className="text-2xl font-semibold">Skills & Competencies</h2>
+          <h2 className="text-2xl font-semibold">Toolkit</h2>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {skillCategories.map((category) => (
@@ -176,7 +175,7 @@ export default function AboutPage() {
           href="/contact"
           className="mt-12 inline-flex h-12 items-center gap-2 rounded-sm bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800"
         >
-          Start a conversation
+          Get in touch
           <ArrowRight size={16} aria-hidden="true" />
         </Link>
       </section>

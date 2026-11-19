@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.3fr_0.7fr_0.7fr] md:px-8">
         <div>
           <p className="text-lg font-semibold">{profile.name}</p>
-          <p className="mt-1 text-sm text-white/44">AI Strategy Consultant &middot; {profile.location}</p>
+          <p className="mt-1 text-sm text-white/44">{profile.location}</p>
           <p className="mt-4 max-w-xl text-sm leading-7 text-white/58">{profile.summary}</p>
         </div>
 

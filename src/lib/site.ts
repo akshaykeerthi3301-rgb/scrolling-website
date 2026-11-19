@@ -1,29 +1,20 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  BrainCircuit,
-  Briefcase,
-  Globe2,
-  Layers3,
-  LineChart,
-  ShieldCheck,
-  TrendingUp,
-  Workflow,
-} from "lucide-react";
+import { BrainCircuit, Briefcase, Layers3 } from "lucide-react";
 
 export const profile = {
   name: "Akshay Keerthi",
   domain: "akshaykeerthi.vercel.app",
   title:
-    "AI Strategy Consultant & Digital Transformation — IIM Sambalpur MBA | GenAI Implementation | Private Banking & HNI Wealth Advisory",
+    "Akshay Keerthi: works, case studies and profile. Working AI products for messy, high-stakes workflows.",
   email: "akshaykeerthi3301@gmail.com",
   phone: "+91-8606366187",
   location: "Bangalore, India",
   linkedin: "https://linkedin.com/in/akshay-keerthi",
   github: "https://github.com/akshaykeerthi3301-rgb",
   availability:
-    "Open to AI strategy, digital transformation, and GenAI consulting engagements",
+    "Open to roles across AI product, strategy, sales and business development, and people operations.",
   summary:
-    "IIM Sambalpur MBA with experience across private banking, independent AI product development, and client advisory. Currently managing INR 500 Cr+ in HNI client assets at ICICI Bank. Background in hands-on AI project work spanning fleet management SaaS, algorithmic trading, and GenAI tools. Recently delivered a full go-to-market strategy for a Bangalore-based business, resulting in a 20x increase in social reach within one week.",
+    "IIM Sambalpur MBA. I build working AI products for messy, high-stakes workflows, after learning those workflows first-hand on a private banking desk and in Amazon HR operations.",
 };
 
 export function getSiteUrl() {
@@ -33,30 +24,30 @@ export function getSiteUrl() {
 }
 
 export const navItems = [
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Insights", href: "/insights" },
+  { label: "Case studies", href: "/work#case-studies" },
+  { label: "Works", href: "/work#works" },
+  { label: "Profile", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const cinematicScenes = [
   {
-    eyebrow: "01 / AI Strategy",
-    title: "GenAI implementation grounded in business reality.",
-    copy: "From LLM orchestration to agentic workflows — I design AI strategies that ship, not slide decks that stall. Every recommendation is backed by hands-on builds using Claude API, Python, and production-grade tooling.",
-    metric: "5 AI products built",
+    eyebrow: "01 / Diagnose",
+    title: "Messy workflows first.",
+    copy: "Private banking escalations and 300–400 employee-relations cases a month showed me where a process actually breaks, and what people do when it does.",
+    metric: "300–400 cases a month",
   },
   {
-    eyebrow: "02 / Domain Expertise",
-    title: "Private banking discipline meets tech execution.",
-    copy: "Managing INR 500 Cr+ in HNI assets at ICICI Bank sharpened my instinct for risk, client outcomes, and data-driven decisions. That same rigour drives every AI engagement.",
-    metric: "INR 500 Cr+ AUM",
+    eyebrow: "02 / Build",
+    title: "Shipped, not slideware.",
+    copy: "Jobinko and VendorSim are live. Jobinko has 408 commits behind it and a written decision log, including the decisions I reversed.",
+    metric: "Live: jobinko.in",
   },
   {
-    eyebrow: "03 / Consulting Delivery",
-    title: "Strategy through execution — solo or with your team.",
-    copy: "Recently delivered a full GTM strategy for a Bangalore business — 20x social reach in one week. I work end-to-end: market sizing, content strategy, website builds, and measurable launch outcomes.",
-    metric: "20x reach in 7 days",
+    eyebrow: "03 / Control",
+    title: "AI reads. Code decides.",
+    copy: "Across my projects, models read messy text and write words. Code does the arithmetic and enforces the gates, so failures are contained.",
+    metric: "Guardrails by design",
   },
 ];
 
@@ -64,162 +55,42 @@ export type Capability = {
   icon: LucideIcon;
   title: string;
   body: string;
+  items: string[];
 };
 
 export const capabilities: Capability[] = [
   {
-    icon: BrainCircuit,
-    title: "AI Strategy & GenAI",
-    body: "Design and implement GenAI solutions using Claude API, LLM orchestration, prompt engineering, and agentic workflows — with responsible AI governance built in.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Wealth & Private Banking",
-    body: "HNI advisory across equities, F&O, mutual funds, PMS, and alternate assets. Portfolio analysis in Excel and Power BI with data-backed recommendations for C-suite clients.",
-  },
-  {
     icon: Layers3,
-    title: "Product Architecture",
-    body: "Full-stack SaaS builds with Next.js, TypeScript, Prisma/PostgreSQL, Stripe billing, multi-tenant isolation, and API integrations — from prototype to pilot-ready.",
+    title: "Product & discovery",
+    body: "Turning a vague complaint into a scoped product, and writing down why.",
+    items: [
+      "Problem framing and product requirement documents (Jobinko, AutoRAG-Eval)",
+      "Roadmaps and decision logs, including reversals (Jobinko)",
+      "Competitor and feature-parity analysis with evidence tags",
+      "Pricing and go-to-market (Mind Customs, WebCraft AI)",
+    ],
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI systems & prototyping",
+    body: "Shipping working systems where the model's job is small and checkable.",
+    items: [
+      "Code-enforced gates around language models (CashFlowPilot, Jobinko)",
+      "Evaluation harnesses, judges and reference sets (AutoRAG-Eval)",
+      "Planner and worker agent workflows with validated tool calls",
+      "Next.js, TypeScript, Postgres and Python, shipped to production",
+    ],
   },
   {
     icon: Briefcase,
-    title: "Business Consulting",
-    body: "Go-to-market strategy, customer segmentation, content strategy, market sizing, and business case development. MECE frameworks and evidence-led recommendations.",
-  },
-  {
-    icon: LineChart,
-    title: "Data & Analytics",
-    body: "Power BI dashboards, Python backtesting engines, cross-market signal analysis, and performance attribution models that turn data into decisions.",
-  },
-  {
-    icon: Workflow,
-    title: "Digital Transformation",
-    body: "Process automation with n8n, API integrations, system design, and workflow orchestration — connecting legacy operations to modern AI-powered tooling.",
-  },
-];
-
-export const featuredWork = [
-  {
-    slug: "fleetsense",
-    title: "FleetSense",
-    type: "Full-stack SaaS platform",
-    year: "2026",
-    summary:
-      "A multi-tenant SaaS platform for fleet operators covering 15+ data models across vehicles, drivers, compliance, predictive maintenance, fuel monitoring, and work orders.",
-    points: [
-      "Next.js 15 + TypeScript + Prisma/PostgreSQL",
-      "Samsara telematics API + NHTSA recall integration",
-      "Stripe billing + Clerk multi-tenant auth",
-      "Built with Claude Code & GitHub Copilot",
+    title: "Stakeholder & enterprise execution",
+    body: "Working with people who have money, rules or deadlines at stake.",
+    items: [
+      "High-net-worth client advisory and escalations (ICICI Bank)",
+      "Policy-heavy employee-relations cases under service targets (Amazon)",
+      "Marketplace vendor management and account planning (VendorSim)",
+      "Solo go-to-market delivery from strategy to launch (Mind Customs)",
     ],
-    challenge:
-      "Build a production-grade fleet management platform from scratch that handles real-world complexity — DVIR, HOS compliance, geofencing, predictive maintenance — while staying pilot-ready for first customers.",
-    approach:
-      "Designed a multi-tenant architecture with 15+ data models, integrated Samsara telematics API and NHTSA recall database for vehicle health monitoring, and added Stripe billing with Clerk authentication for enterprise-grade access control.",
-    outcome:
-      "Platform is complete and ready for pilot — full fleet operations suite with real-time telematics, compliance tracking, and automated work orders. Currently seeking first pilot fleet operators.",
-  },
-  {
-    slug: "cross-asset-alpha-bot",
-    title: "Cross Asset Alpha Bot",
-    type: "Algorithmic trading system",
-    year: "2026",
-    summary:
-      "A 2,085-line backtesting and paper trading engine for NSE futures with 7+ signal families, three-sleeve architecture, and cross-market regime detection.",
-    points: [
-      "Python — 2,085-line trading engine",
-      "7+ signal families (ORB, VWAP, macro regime-switch)",
-      "Upstox API + Telegram alerts + Google Sheets P&L",
-      "Three-sleeve architecture (Intraday/Daily/Monthly)",
-    ],
-    challenge:
-      "Build a systematic trading engine that pulls cross-asset signals, manages risk across multiple timeframes, and maintains strict paper-trading boundaries before live deployment.",
-    approach:
-      "Designed a three-sleeve architecture where Intraday, Daily, and Monthly strategies are independently risk-managed. Integrated FII/DII flows, VIX, crude, gold, and USD/INR for macro regime detection via Upstox API.",
-    outcome:
-      "Consistent paper trading profits in validation with full Telegram alerting and Google Sheets P&L sync. Engine is architecturally ready for live capital deployment.",
-  },
-  {
-    slug: "webcraft-ai",
-    title: "WebCraft AI",
-    type: "GenAI website generation agent",
-    year: "2026",
-    summary:
-      "A GenAI agent that generates customised websites from natural language — targeting India's 63 million SMEs with a full business case and SaaS pricing model.",
-    points: [
-      "Claude API + LLM orchestration",
-      "Natural language to website generation",
-      "B2B SaaS concept with market sizing",
-      "Responsible AI considerations built in",
-    ],
-    challenge:
-      "Create a GenAI agent capable of generating production-quality websites from conversational prompts while building a viable B2B business model for India's massive SME market.",
-    approach:
-      "Built an LLM-orchestrated pipeline using Claude API with structured prompt engineering. Developed the full business case: TAM/SAM/SOM market sizing, SaaS pricing tiers, responsible AI guardrails, and a phased GTM roadmap.",
-    outcome:
-      "Functional agent in refinement with a validated business case. The project demonstrates end-to-end GenAI product thinking — from prompt engineering to unit economics.",
-  },
-  {
-    slug: "mind-customs",
-    title: "Mind Customs — GTM Strategy",
-    type: "Consulting engagement",
-    year: "2026",
-    summary:
-      "Full go-to-market strategy and website build for a Bangalore-based automotive protection service — from customer segmentation to a 20x increase in social reach.",
-    points: [
-      "Business strategy + customer segmentation",
-      "Instagram content strategy — 2K to 40K views",
-      "End-to-end website design and build",
-      "Solo engagement: strategy through execution",
-    ],
-    challenge:
-      "Help a niche automotive protection service (rodent mesh installation) find its market in Bangalore — from zero digital presence to measurable traction.",
-    approach:
-      "Assessed positioning and GTM strategy, advising on locality-level targeting to identify highest-intent early adopters. Developed Instagram content strategy and designed the brand website end-to-end.",
-    outcome:
-      "20x increase in reel reach (2K to 40K views) within one week of implementation. Website complete and deployed. Full delivery from strategy through execution as a solo consultant.",
-  },
-  {
-    slug: "cloud-printer",
-    title: "Cloud Printer",
-    type: "Startup concept — National finalist",
-    year: "2023",
-    summary:
-      "A QR-code-enabled print vending machine concept — solo founder pitch selected as Startup Odisha National Finalist from a nationwide applicant pool.",
-    points: [
-      "QR-code print-on-demand from mobile",
-      "Problem framing + unit economics",
-      "Solo founder pitch at national level",
-      "Startup Odisha National Finalist",
-    ],
-    challenge:
-      "Conceptualise a hardware-meets-software product for on-demand document printing and pitch it convincingly as a solo founder at a national startup competition.",
-    approach:
-      "Designed the full concept: QR-code-enabled vending machine printing PDFs from a customer's phone on demand. Built the pitch covering problem framing, technical architecture, unit economics, and go-to-market strategy.",
-    outcome:
-      "Selected as Startup Odisha National Finalist — validating the business concept and pitch quality against a national applicant pool.",
-  },
-];
-
-export type WorkItem = (typeof featuredWork)[number];
-
-export const processSteps = [
-  {
-    title: "Diagnose the opportunity",
-    body: "Map the business problem, identify where AI creates real value (not just novelty), and assess organisational readiness for implementation.",
-  },
-  {
-    title: "Design the AI strategy",
-    body: "Define the architecture, select the right models and tooling, set responsible AI boundaries, and build the business case with clear ROI metrics.",
-  },
-  {
-    title: "Build and validate",
-    body: "Ship working prototypes fast — real code, real APIs, real data. Validate with users before scaling. No slide-deck strategies that never reach production.",
-  },
-  {
-    title: "Launch and measure",
-    body: "Deploy to production, instrument for measurement, and iterate based on evidence. Strategy is only as good as the outcomes it delivers.",
   },
 ];
 
@@ -309,7 +180,16 @@ export const insights: Insight[] = [
   },
 ];
 
+
 export const experience = [
+  {
+    role: "Independent product builder",
+    company: "Own products",
+    location: "Bangalore",
+    period: "2026 – Present",
+    highlight: "Jobinko, VendorSim, CashFlowPilot, AutoRAG-Eval and more",
+    metric: "2 products live",
+  },
   {
     role: "Private Banking Manager (M1)",
     company: "ICICI Bank",
@@ -323,15 +203,15 @@ export const experience = [
     company: "Mind Customs",
     location: "Bangalore",
     period: "May 2026",
-    highlight: "Full GTM strategy + website build — solo engagement",
-    metric: "20x social reach in 1 week",
+    highlight: "Go-to-market strategy and website build, solo",
+    metric: "Reel views 2K to 40K in 1 week",
   },
   {
     role: "HR Associate",
     company: "Amazon",
     location: "Hyderabad",
     period: "Apr 2022 – Jan 2023",
-    highlight: "300–400 ER cases/month, global workforce",
+    highlight: "300–400 employee-relations cases a month, global workforce",
     metric: "90%+ CSAT, full SLA compliance",
   },
   {
@@ -339,26 +219,35 @@ export const experience = [
     company: "IIM Sambalpur",
     location: "Odisha",
     period: "2023 – 2025",
-    highlight: "Strategy, Analytics, Finance, Marketing",
+    highlight: "Strategy, Analytics, HR, Marketing",
     metric: "Placement Committee member",
   },
 ];
 
+export const credentials = [
+  {
+    title: "Executive Program in Forward Deployed AI Product Management",
+    issuer: "IITM Pravartak",
+  },
+  { title: "Generative AI certification", issuer: "Microsoft" },
+  { title: "Responsible AI certification", issuer: "United Nations" },
+  { title: "B.Tech, Mechanical Engineering", issuer: "College of Engineering Muttathara" },
+];
+
 export const achievements = [
-  { label: "MAB Turnaround", value: "50%", detail: "INR 22 Cr to 11 Cr deficit reduction in 3 months" },
-  { label: "Social Reach", value: "20x", detail: "2K to 40K reel views in one week" },
-  { label: "Client CSAT", value: "90%+", detail: "Sustained across 300-400 monthly cases at Amazon" },
-  { label: "National Finalist", value: "Top", detail: "Startup Odisha — Cloud Printer, solo founder" },
+  { label: "MAB turnaround", value: "50%", detail: "INR 22 Cr to 11 Cr deficit reduction in 3 months" },
+  { label: "Reel views", value: "20x", detail: "2K to 40K in one week (Mind Customs)" },
+  { label: "Client CSAT", value: "90%+", detail: "Across 300–400 monthly cases at Amazon" },
+  { label: "National finalist", value: "Top", detail: "Startup Odisha, Cloud Printer, solo founder" },
 ];
 
 export const stackHighlights = [
-  "Claude API",
   "Python",
-  "Next.js",
   "TypeScript",
-  "Power BI",
-  "Prisma/PostgreSQL",
-  "LLM Orchestration",
+  "Next.js",
+  "Postgres",
+  "LLM agents",
+  "Evals",
   "Vercel",
 ];
 
