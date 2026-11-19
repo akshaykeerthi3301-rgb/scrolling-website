@@ -17,7 +17,7 @@ export function SiteHeader() {
           </span>
           <span className="hidden flex-col leading-none sm:flex">
             <span className="font-semibold">{profile.name}</span>
-            <span className="mt-1 text-xs text-white/55">Works &middot; Case studies &middot; Profile</span>
+            <span className="mt-1 text-xs text-white/55">Projects &middot; Minor works &middot; Profile</span>
           </span>
         </Link>
 

@@ -8,7 +8,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: `${profile.name} | Works, case studies and profile`,
+    default: `${profile.name} | Projects, minor works and profile`,
     template: `%s | ${profile.name}`,
   },
   description: profile.title,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: `${profile.name} | Works, case studies and profile`,
+    title: `${profile.name} | Projects, minor works and profile`,
     description: profile.title,
     url: getSiteUrl(),
     siteName: `${profile.name}`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} | Works, case studies and profile`,
+    title: `${profile.name} | Projects, minor works and profile`,
     description: profile.title,
     images: ["/opengraph-image"],
   },

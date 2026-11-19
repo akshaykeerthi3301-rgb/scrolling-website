@@ -2,6 +2,17 @@
 // Rules for this file: every claim must be checkable in the repo or the live product.
 // Say what is live, what is only on GitHub, and what is private. Never blur the three.
 
+import type { Study } from "@/lib/study-types";
+import { jobinkoStudy } from "@/lib/studies/jobinko";
+import { cashflowpilotStudy } from "@/lib/studies/cashflowpilot";
+import { vendorsimStudy } from "@/lib/studies/vendorsim";
+import { autoragEvalStudy } from "@/lib/studies/autorag-eval";
+import { tradingResearchStudy } from "@/lib/studies/trading-research";
+import { cloudPrinterStudy } from "@/lib/studies/cloud-printer";
+import { mindCustomsStudy } from "@/lib/studies/mind-customs";
+import { fleetsenseStudy } from "@/lib/studies/fleetsense";
+import { webcraftAiStudy } from "@/lib/studies/webcraft-ai";
+
 export type WorkStatus = "live" | "code" | "private";
 
 export type WorkLink = { label: string; href: string };
@@ -11,7 +22,7 @@ export type Work = {
   title: string;
   type: string;
   year: string;
-  /** "case-study" projects get a featured deep-dive; "lab" projects are smaller works. */
+  /** "case-study" = a main project with a deep-dive; "lab" = a minor work. */
   tier: "case-study" | "lab";
   status: { kind: WorkStatus; label: string };
   links: WorkLink[];
@@ -26,6 +37,8 @@ export type Work = {
   owned: string[];
   /** What happened, and what is not known yet. */
   outcome: string;
+  /** Long-form Harvard-style case study. Pages fall back to the short layout without it. */
+  study?: Study;
 };
 
 export const works: Work[] = [
@@ -52,6 +65,7 @@ export const works: Work[] = [
       "Job seekers get padded lists that hide why a role fits or does not, and résumé filters that reject them without explanation. A list that silently drops roles, or invents skills to look helpful, costs the candidate trust and interviews.",
     approach:
       "Results are sorted into visible buckets (fits you, experience out of range, location out of range, worth a look) so nothing is hidden and the reason is shown. A model reads the résumé for skills and domain, but it never decides the score: code computes six weighted components. Résumé drafting is limited to confirmed facts, and the guard against invented skills shipped together with the feature, not after it. The extension's apply-for-me mode is off by default, capped at 25 a day, stops at any CAPTCHA or required question it cannot answer from saved facts, and marks a job Applied only when the employer confirms.",
+    study: jobinkoStudy,
     owned: [
       "Precision over volume: a short honest list beats a padded one.",
       "Reversed two of my own early decisions in the open: ranking instead of gating (4 Sep 2026) and assisted apply instead of never applying (25 Sep 2026). Each reversal is logged with its reason, not quietly edited.",
@@ -83,6 +97,7 @@ export const works: Work[] = [
       "Finance teams will not trust an AI that reads an invoice and moves money. One misread digit is a real loss, and an agent that can act before a human approves is a liability.",
     approach:
       "The rule of the codebase: code does every calculation and enforces every gate; AI only reads messy text and writes words, behind schemas, confidence thresholds and budgets. For each invoice, AI copies values as printed, code confirms every value is actually on the page, then checks tax IDs, line maths, totals and a three-way match against purchase orders and goods receipts. Anything that does not add up goes to a person. A state machine is the only writer of a deal's stage, and the agent locks until the founder marks the deal won and signs a release; the customer then starts in read-only shadow mode.",
+    study: cashflowpilotStudy,
     owned: [
       "Chose a lock-then-shadow rollout over a faster autonomous start, trading speed for trust.",
       "Capped AI spend and fell back to code-only reading when the cap is hit.",
@@ -96,7 +111,7 @@ export const works: Work[] = [
     title: "VendorSim",
     type: "Amazon vendor-management simulator and trainer",
     year: "2026",
-    tier: "case-study",
+    tier: "lab",
     status: { kind: "live", label: "Live at vendorsim.vercel.app" },
     links: [{ label: "Open the live simulator", href: "https://vendorsim.vercel.app" }],
     summary:
@@ -111,6 +126,7 @@ export const works: Work[] = [
       "Marketplace account management is learned on the job, and the jargon (glance views, Buy Box, chargebacks, JBP) hides the real skill: matching the right lever to the actual cause of a problem.",
     approach:
       "Three vendors with different profiles share five action points a week. A crisis pauses the simulation, and a lever only helps if it matches the cause: an unauthorised seller needs a brand-protection case, not an ad. Vendors remember ignored problems and escalate. A performance improvement plan freezes ads and plans, and can end the run. Role facts come from Amazon's own job postings; every number in the game is invented, and the research file says which claims are unverified.",
+    study: vendorsimStudy,
     owned: [
       "Labelled all numbers as illustrative, because Amazon publishes no benchmarks.",
       "Softened the shocks after the first test run showed one shock alone could put a careful player on a plan.",
@@ -141,6 +157,7 @@ export const works: Work[] = [
       "Financial research is where language models are most useful and least trustworthy: a hallucinated figure is expensive, and a single chat answer gives no way to see what was retrieved, what was computed and what was invented.",
     approach:
       "Retrieval, computation and synthesis are separate stages with visible state (pending, running, done, failed). Every tool call is validated, and the user can read the trace, not just the answer. A judge grades each answer against a rubric, and a fixed set of reference questions guards the judge itself so quality is a number, not a feeling.",
+    study: autoragEvalStudy,
     owned: [
       "Wrote the product requirements, including who it is for: someone who will not accept 'trust me'.",
       "Put evaluation inside the product instead of treating it as a later add-on.",
@@ -171,6 +188,7 @@ export const works: Work[] = [
       "A niche service (rodent-proofing mesh for cars) with almost no digital presence in Bangalore. Nobody searches for it by name, so the work was finding who has the problem and meeting them there.",
     approach:
       "Assessed positioning, then narrowed to the localities with the most likely early adopters. Built a content plan around the problem people recognise, and designed the website so a visitor can act quickly.",
+    study: mindCustomsStudy,
     owned: [
       "Picked narrow targeting over broad reach, and measured against the one thing that was cheap to observe: reel views.",
       "Built the site myself, so strategy and execution stayed in one hand.",
@@ -200,6 +218,7 @@ export const works: Work[] = [
       "Small fleets run on spreadsheets and phone calls, yet face real compliance rules such as inspection reports and driver hours.",
     approach:
       "One shared platform where each customer's data is isolated, with compliance, maintenance and work orders in one place and external data feeds for telematics and recalls.",
+    study: fleetsenseStudy,
     owned: ["Scoped to a pilot-ready core rather than every fleet feature."],
     outcome:
       "Built and deployed, with no pilot customer yet. The two commits in the repository reflect a build done in short, focused passes, not a long-running product.",
@@ -224,6 +243,7 @@ export const works: Work[] = [
       "Most trading ideas look good before costs and fail after them, and a bot that is not honest about that is dangerous.",
     approach:
       "A cost model sits under every backtest and every paper trade. Candidates must survive it, and nothing in the paper-trading code calls a real order endpoint. The README separates what is live from what is built but idle.",
+    study: tradingResearchStudy,
     owned: [
       "Killed seven of eight strategies rather than keep a flattering one.",
       "Documented gaps openly: thin automated tests on the money maths, and two unreconciled copies of one strategy.",
@@ -251,6 +271,7 @@ export const works: Work[] = [
       "Small businesses need a web presence but not a design project. Generic builders still demand skills they do not have.",
     approach:
       "A language model drafts the site from a short description, and the owner edits and publishes it. The business case covers market size and pricing.",
+    study: webcraftAiStudy,
     owned: ["Wrote the business case alongside the product, not after it."],
     outcome:
       "A working early prototype. I have no customer numbers, and I would not present it as more than a prototype.",
@@ -272,12 +293,13 @@ export const works: Work[] = [
       "Startup Odisha national finalist",
     ],
     challenge:
-      "People who need a quick print, such as forms or tickets, often cannot find a working shop at the time they need it.",
+      "Most campuses offer no printing. Students print at the last moment and pay whatever the nearest vendor charges.",
     approach:
       "A machine that accepts a document from the customer's phone via QR code and prints on demand, with the pitch built around the problem, the machine and the unit economics.",
+    study: cloudPrinterStudy,
     owned: ["Pitched and defended the concept alone."],
     outcome:
-      "Selected as a national finalist. The machine itself was never built.",
+      "Selected as a national finalist. No prototype is recorded, and the unit economics in the deck are not fully consistent.",
   },
 ];
 

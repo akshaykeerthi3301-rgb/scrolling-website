@@ -6,8 +6,8 @@ import { getSiteUrl, profile } from "@/lib/site";
 import { caseStudies, labWorks, works, type Work } from "@/lib/works";
 
 export const metadata: Metadata = {
-  title: "Works and case studies",
-  description: `Works and case studies by ${profile.name}: what is live, what is on GitHub, and the product decisions behind each.`,
+  title: "Projects and minor works",
+  description: `Projects and minor works by ${profile.name}: what is live, what is on GitHub, and the product decisions behind each.`,
 };
 
 const statusStyle = {
@@ -59,7 +59,7 @@ export default function WorkPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: `${profile.name} works and case studies`,
+          name: `${profile.name} projects and minor works`,
           url: `${siteUrl}/work`,
           hasPart: works.map((work) => ({
             "@type": "CreativeWork",
@@ -71,18 +71,18 @@ export default function WorkPage() {
       />
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-red-700">Works</p>
+          <p className="text-sm font-semibold uppercase text-red-700">Work</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
-            Case studies and smaller works.
+            Projects and minor works.
           </h1>
           <p className="mt-6 text-base leading-8 text-neutral-600">
             Each entry says whether it is live, only on GitHub, or private, and
-            which trade-offs were mine. More projects are added as they ship.
+            which trade-offs were mine. More are added as they ship.
           </p>
         </div>
 
-        <h2 id="case-studies" className="mt-16 scroll-mt-28 text-2xl font-semibold">
-          Case studies
+        <h2 id="projects" className="mt-16 scroll-mt-28 text-2xl font-semibold">
+          Projects
         </h2>
         <div className="mt-6 grid gap-5">
           {caseStudies.map((work) => (
@@ -90,8 +90,8 @@ export default function WorkPage() {
           ))}
         </div>
 
-        <h2 id="works" className="mt-16 scroll-mt-28 text-2xl font-semibold">
-          Works
+        <h2 id="minor-works" className="mt-16 scroll-mt-28 text-2xl font-semibold">
+          Minor works
         </h2>
         <div className="mt-6 grid gap-5">
           {labWorks.map((work) => (

@@ -28,8 +28,8 @@ import { FrameSequenceCanvas } from "@/components/cinematic/frame-sequence-canva
 
 const chapters = [
   { id: "intro", label: "Intro", range: "000-019" },
-  { id: "case-studies", label: "Case studies", range: "020-039" },
-  { id: "works", label: "Works", range: "040-059" },
+  { id: "projects", label: "Projects", range: "020-039" },
+  { id: "minor-works", label: "Minor works", range: "040-059" },
   { id: "profile", label: "Profile", range: "060-079" },
   { id: "connect", label: "Connect", range: "080-095" },
 ];
@@ -218,7 +218,7 @@ export function CinematicPortfolioExperience() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-sm border border-white/15 bg-white/8 px-3 py-2 text-sm text-white/72 backdrop-blur-xl">
               <Briefcase size={15} aria-hidden="true" />
-              Works &middot; Case studies &middot; Profile
+              Projects &middot; Minor works &middot; Profile
             </div>
 
             <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
@@ -231,10 +231,10 @@ export function CinematicPortfolioExperience() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
-                onClick={() => scrollToSection("case-studies")}
+                onClick={() => scrollToSection("projects")}
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-sm bg-white px-5 text-sm font-semibold text-neutral-950 transition hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300"
               >
-                See the case studies
+                See the projects
                 <ArrowDown size={16} aria-hidden="true" />
               </button>
               <Link
@@ -291,7 +291,7 @@ export function CinematicPortfolioExperience() {
           </div>
           <button
             type="button"
-            onClick={() => scrollToSection("case-studies")}
+            onClick={() => scrollToSection("projects")}
             className="inline-flex items-center gap-2 text-sm text-white/64 transition hover:text-white"
           >
             Scroll to explore
@@ -302,14 +302,14 @@ export function CinematicPortfolioExperience() {
 
       {/* ── CASE STUDIES ── */}
       <section
-        id="case-studies"
+        id="projects"
         className="relative min-h-screen px-5 py-20 md:px-8 md:py-28"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
             <div>
               <p className="text-sm font-semibold uppercase text-sky-300">
-                Case studies
+                Projects
               </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
                 What broke, what I decided, what happened.
@@ -444,13 +444,13 @@ export function CinematicPortfolioExperience() {
 
       {/* ── WORKS ── */}
       <section
-        id="works"
+        id="minor-works"
         className="relative px-5 py-20 md:px-8 md:py-28"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase text-teal-300">
-              Works
+              Minor works
             </p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">
               Smaller builds and experiments.
@@ -484,10 +484,10 @@ export function CinematicPortfolioExperience() {
             ))}
             <div className="flex flex-col justify-center rounded-sm border border-dashed border-white/18 p-5 text-white/50">
               <p className="text-lg font-semibold text-white/70">
-                More projects to come.
+                More to come.
               </p>
               <p className="mt-2 text-sm leading-6">
-                New builds are added here as they ship.
+                New projects and minor works are added as they ship.
               </p>
             </div>
           </div>
@@ -647,7 +647,7 @@ export function CinematicPortfolioExperience() {
                   href="/work"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-sm border border-white/16 px-6 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
                 >
-                  All works
+                  All projects
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </div>

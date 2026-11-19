@@ -5,11 +5,11 @@ export const profile = {
   name: "Akshay Keerthi",
   domain: "akshaykeerthi.vercel.app",
   title:
-    "Akshay Keerthi: works, case studies and profile. Working AI products for messy, high-stakes workflows.",
+    "Akshay Keerthi: projects, minor works and profile. Working AI products for messy, high-stakes workflows.",
   email: "akshaykeerthi3301@gmail.com",
   phone: "+91-8606366187",
   location: "Bangalore, India",
-  linkedin: "https://linkedin.com/in/akshay-keerthi",
+  linkedin: "https://linkedin.com/in/akshay-keerthi-rgb",
   github: "https://github.com/akshaykeerthi3301-rgb",
   availability:
     "Open to roles across AI product, strategy, sales and business development, and people operations.",
@@ -24,8 +24,8 @@ export function getSiteUrl() {
 }
 
 export const navItems = [
-  { label: "Case studies", href: "/work#case-studies" },
-  { label: "Works", href: "/work#works" },
+  { label: "Projects", href: "/work#projects" },
+  { label: "Minor works", href: "/work#minor-works" },
   { label: "Profile", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

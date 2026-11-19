@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getSiteUrl, profile } from "@/lib/site";
+import { CaseStudyBody } from "@/components/case-study";
 import { getWork, works } from "@/lib/works";
 
 type WorkPageProps = {
@@ -75,7 +76,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 transition hover:text-neutral-950"
         >
           <ArrowLeft size={16} aria-hidden="true" />
-          Works
+          All work
         </Link>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
@@ -119,6 +120,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           </div>
         </div>
 
+        {work.study ? (
+          <CaseStudyBody study={work.study} />
+        ) : (
         <div className="mt-14 grid gap-5">
           {[
             ["The operational friction", work.challenge],
@@ -146,6 +150,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <p className="mt-4 text-sm leading-7 text-neutral-600">{work.outcome}</p>
           </section>
         </div>
+        )}
 
         <Link
           href="/contact"
