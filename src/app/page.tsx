@@ -14,16 +14,39 @@ export default function Home() {
           name: profile.name,
           url: siteUrl,
           email: profile.email,
-          jobTitle: "Full-stack builder",
+          jobTitle: "AI Strategy Consultant",
           description: profile.summary,
-          knowsAbout: ["Next.js", "cinematic web design", "automation", "AI workflows", "portfolio systems"],
+          alumniOf: [
+            {
+              "@type": "CollegeOrUniversity",
+              name: "IIM Sambalpur",
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              name: "College of Engineering Muttathara",
+            },
+          ],
+          knowsAbout: [
+            "AI Strategy",
+            "GenAI Implementation",
+            "LLM Orchestration",
+            "Claude API",
+            "Digital Transformation",
+            "Private Banking",
+            "HNI Wealth Advisory",
+            "Go-to-Market Strategy",
+            "Full-stack Development",
+            "Next.js",
+            "Python",
+          ],
+          sameAs: [profile.linkedin, profile.github],
         }}
       />
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: `${profile.name} Portfolio`,
+          name: `${profile.name} — AI Strategy Consultant`,
           url: siteUrl,
           description: profile.title,
           publisher: {

@@ -5,7 +5,7 @@ import { insights, profile } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Insights",
-  description: `Writing by ${profile.name} about cinematic portfolios, publishable systems, and AdSense-ready web properties.`,
+  description: `Writing by ${profile.name} on AI strategy, GenAI implementation, and the intersection of domain expertise and technology.`,
 };
 
 export default function InsightsPage() {
@@ -15,11 +15,11 @@ export default function InsightsPage() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase text-red-700">Insights</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
-            Notes that make the portfolio more than a page.
+            Thinking on AI strategy, GenAI, and building at the intersection.
           </h1>
           <p className="mt-6 text-base leading-8 text-neutral-600">
-            These articles give the site useful, original content for visitors and search engines. Replace them with final
-            personal writing before AdSense review.
+            Notes from the field — on AI implementation, market opportunity, and why domain expertise
+            matters more than model access.
           </p>
         </div>
 

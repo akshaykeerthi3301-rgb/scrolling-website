@@ -8,27 +8,27 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: `${profile.name} | Cinematic Full-stack Portfolio`,
+    default: `${profile.name} | AI Strategy Consultant`,
     template: `%s | ${profile.name}`,
   },
   description: profile.title,
-  applicationName: `${profile.name} Portfolio`,
+  applicationName: `${profile.name} — AI Strategy`,
   authors: [{ name: profile.name }],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: `${profile.name} | Cinematic Full-stack Portfolio`,
+    title: `${profile.name} | AI Strategy Consultant`,
     description: profile.title,
     url: getSiteUrl(),
-    siteName: `${profile.name} Portfolio`,
+    siteName: `${profile.name}`,
     images: ["/opengraph-image"],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} | Cinematic Full-stack Portfolio`,
+    title: `${profile.name} | AI Strategy Consultant`,
     description: profile.title,
     images: ["/opengraph-image"],
   },

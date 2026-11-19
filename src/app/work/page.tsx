@@ -6,7 +6,7 @@ import { featuredWork, getSiteUrl, profile } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: `Selected portfolio work by ${profile.name}: cinematic web, dashboards, automation, and product scaffolds.`,
+  description: `Selected work by ${profile.name}: SaaS platforms, algorithmic trading, GenAI agents, business consulting, and startup concepts.`,
 };
 
 export default function WorkPage() {
@@ -31,10 +31,10 @@ export default function WorkPage() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase text-red-700">Work</p>
-          <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">Selected systems and product directions.</h1>
+          <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">Strategy meets execution — five projects, built end-to-end.</h1>
           <p className="mt-6 text-base leading-8 text-neutral-600">
-            These are portfolio-ready case-study shells. Replace the current summaries with final evidence, screenshots,
-            metrics, and links as each project matures.
+            From SaaS platforms to algorithmic trading engines to GenAI agents — each project demonstrates
+            the full cycle from problem framing to production delivery.
           </p>
         </div>
 
